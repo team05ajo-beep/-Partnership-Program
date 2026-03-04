@@ -245,7 +245,7 @@ const App: React.FC = () => {
           <section className="relative h-screen flex items-center justify-center pt-16 overflow-hidden border-b-4 border-[#d4af37]/20 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
             <div className="absolute inset-0 z-0">
               <img 
-                src="http://t3.gstatic.com/images?q=tbn:ANd9GcRtstnNzwNtoEmczHiMDS9p7fXFhp8tgb02JWJurFT2hOPqWP3Zm3QEkwjsXdp5UQ" 
+                src="https://images.ctfassets.net/brzb6u29244a/3QlIAJhAncaOSuNA0NKjva/ce65cb585b6542da6e13669b750b748a/HeroCategory-Desktop_A0020YAAGRB1000_001_Default.png?w=2000&fm=avif&q=50" 
                 alt="Luxury Background" 
                 className="w-full h-full object-cover opacity-100 brightness-75 contrast-110"
                 referrerPolicy="no-referrer"
