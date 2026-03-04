@@ -244,15 +244,12 @@ const App: React.FC = () => {
           {/* Hero Section */}
           <section className="relative h-screen flex items-center justify-center pt-16 overflow-hidden border-b-4 border-[#d4af37]/20 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
             <div className="absolute inset-0 z-0">
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
+              <img 
+                src="http://t3.gstatic.com/images?q=tbn:ANd9GcRtstnNzwNtoEmczHiMDS9p7fXFhp8tgb02JWJurFT2hOPqWP3Zm3QEkwjsXdp5UQ" 
+                alt="Luxury Background" 
                 className="w-full h-full object-cover opacity-100 brightness-75 contrast-110"
-              >
-                <source src="https://house-fastly-signed-eu-west-1-prod.brightcovecdn.com/media/v1/pmp4/static/clear/2924921183001/7d029f56-b07e-4094-9f63-7d58daa9151b/26d09ce7-a3bd-4cc8-a8d0-522f29ee8898/main.mp4?fastly_token=NjlhNmVkMmZfMzhmMmRlYTE2ZTBhOWYzNmRlMmYzNjE3YmM2NDBkM2M5OGViZDc1NjE4YjllMGIxY2ExOGU1ZjIzZDVlMGI2YV8vL2hvdXNlLWZhc3RseS1zaWduZWQtZXUtd2VzdC0xLXByb2QuYnJpZ2h0Y292ZWNkbi5jb20vbWVkaWEvdjEvcG1wNC9zdGF0aWMvY2xlYXIvMjkyNDkyMTE4MzAwMS83ZDAyOWY1Ni1iMDdlLTQwOTQtOWY2My03ZDU4ZGFhOTE1MWIvMjZkMDljZTctYTNiZC00Y2M4LWE4ZDAtNTIyZjI5ZWU4ODk4L21haW4ubXA0" type="video/mp4" />
-              </video>
+                referrerPolicy="no-referrer"
+              />
               <div className="absolute inset-0 bg-black/50"></div>
             </div>
             
@@ -261,11 +258,11 @@ const App: React.FC = () => {
                 <VerificationStamp />
               </div>
               <p className="text-white tracking-[0.3em] sm:tracking-[0.5em] uppercase text-[9px] sm:text-[10px] mb-6 sm:mb-8 font-bold">Official Partnership Network</p>
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 leading-tight tracking-tighter uppercase font-serif text-white">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 sm:mb-8 leading-tight tracking-tighter uppercase font-serif text-white">
                 Eksklusivitas <br />
                 <span className="gold-gradient italic">Berpenghasilan</span>
               </h1>
-              <p className="text-sm sm:text-base md:text-xl text-white/90 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base md:text-xl text-white mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
                 Platform kemitraan resmi Gucci Elite. Hubungkan diri Anda dengan sistem manajemen akun profesional dan mulai hasilkan profit harian dengan bimbingan Admin Registrasi.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
@@ -279,7 +276,7 @@ const App: React.FC = () => {
                   onClick={handleAdminChat}
                   className="border-2 border-white text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white/10 transition-all transform hover:-translate-y-1 active:scale-95"
                 >
-                  Hubungi Admin Registrasi
+                  Chat Advisor
                 </button>
               </div>
             </div>
@@ -376,7 +373,7 @@ const App: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
                   { [
                     { step: "01", title: "Aktivasi Modal", desc: "Aktivasi modal minimal Rp 100.000 untuk pembukaan slot Akun Kerja and biaya sistem operasional Anda.", detail: "Modal minimal Rp 100.000 digunakan untuk mengaktifkan lisensi kemitraan and membuka akses ke sistem operasional Gucci Elite. Dana ini sepenuhnya menjadi saldo awal atau biaya aktivasi sistem yang dikelola secara transparan." },
-                    { step: "02", title: "Pembuatan Akun", desc: "Proses pembuatan Akun Kerja (E-Wallet) yang dipandu langsung oleh Admin Registrasi resmi.", detail: "Proses ini melibatkan verifikasi identitas and pembuatan kredensial login untuk Akun Kerja Anda. Admin Registrasi akan memberikan panduan teknis melalui Telegram/WhatsApp untuk memastikan akun Anda siap digunakan dalam hitungan menit." },
+                    { step: "02", title: "Pembuatan Akun", desc: "Proses pembuatan Akun Kerja (E-Wallet) yang dipandu langsung oleh Admin Registrasi resmi.", detail: "Proses ini melibatkan verifikasi identitas and pembuatan kredensial login untuk Akun Kerja Anda. Admin Registrasi akan memberikan panduan teknis melalui WhatsApp untuk memastikan akun Anda siap digunakan dalam hitungan menit." },
                     { step: "03", title: "Monitoring Hasil", desc: "Pantau saldo pendapatan harian Anda and lakukan penarikan komisi langsung ke rekening pribadi.", detail: "Setelah akun aktif, Anda dapat mulai menjalankan tugas kemitraan. Setiap hasil kerja akan langsung dikreditkan ke saldo Akun Kerja Anda. Transparansi adalah prioritas kami, sehingga Anda memiliki kendali penuh atas setiap rupiah yang Anda hasilkan." }
                   ].map((item, idx) => (
                     <div 
@@ -529,24 +526,9 @@ const App: React.FC = () => {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-                {/* Map Container */}
-                <div className="luxury-card overflow-hidden rounded-[3rem] border-[#d4af37]/30 shadow-2xl min-h-[400px] lg:min-h-full">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.05148342411!2d106.86311637499066!3d-6.25695129373163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3a696739999%3A0x7e296e8e8e8e8e8e!2sPusat%20Grosir%20Cililitan!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid"
-                    width="100%" 
-                    height="100%" 
-                    style={{ border: 0, minHeight: '400px' }} 
-                    allowFullScreen={true} 
-                    loading="lazy" 
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Google Maps PGC"
-                    className="grayscale hover:grayscale-0 transition-all duration-700"
-                  ></iframe>
-                </div>
-
+              <div className="flex justify-center">
                 {/* Address Card */}
-                <div className="luxury-card p-10 md:p-16 rounded-[3rem] border-[#d4af37]/30 shadow-xl bg-white flex flex-col justify-center">
+                <div className="luxury-card p-10 md:p-16 rounded-[3rem] border-[#d4af37]/30 shadow-xl bg-white flex flex-col justify-center max-w-2xl w-full text-center">
                   <div className="space-y-8">
                     <div>
                       <h4 className="text-[#d4af37] font-black text-xs uppercase tracking-widest mb-4">Alamat Resmi</h4>
@@ -560,7 +542,7 @@ const App: React.FC = () => {
                     </div>
                     
                     <div className="pt-8 border-t border-black/5">
-                      <div className="flex items-center gap-4 text-sm font-bold text-gray-400 mb-8">
+                      <div className="flex items-center justify-center gap-4 text-sm font-bold text-gray-400 mb-8">
                         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                         <span>OPERASIONAL: SENIN - JUMAT (09:00 - 18:00)</span>
                       </div>
@@ -647,7 +629,7 @@ const App: React.FC = () => {
                         />
                       </div>
                       <div className="space-y-4">
-                        <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-400">Kontak WhatsApp/Telegram</label>
+                        <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-400">Kontak WhatsApp</label>
                         <input 
                           type="tel" 
                           value={formData.phone}
@@ -675,7 +657,7 @@ const App: React.FC = () => {
                     <div className="p-6 sm:p-8 bg-gold-gradient/5 rounded-2xl sm:rounded-[2rem] border-2 border-[#d4af37]/20">
                       <h5 className="text-[#d4af37] font-bold mb-2 text-xs sm:text-sm uppercase tracking-widest">Informasi Penting:</h5>
                       <p className="text-xs sm:text-sm text-gray-600 italic leading-relaxed">
-                        Data Anda akan diverifikasi secara manual oleh tim Admin Registrasi pusat. Pastikan nomor kontak aktif agar kami dapat segera menghubungi Anda melalui Telegram/WhatsApp untuk tahap pembuatan Akun Kerja (E-Wallet).
+                        Data Anda akan diverifikasi secara manual oleh tim Admin Registrasi pusat. Pastikan nomor kontak aktif agar kami dapat segera menghubungi Anda melalui WhatsApp untuk tahap pembuatan Akun Kerja (E-Wallet).
                       </p>
                     </div>
 
@@ -697,7 +679,7 @@ const App: React.FC = () => {
                     <Shield size={64} className="hidden sm:block text-black" />
                   </div>
                   <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold gold-gradient mb-6 sm:mb-8 uppercase italic">Pendaftaran Berhasil!</h2>
-                  <p className="text-lg sm:text-2xl text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed">Admin Registrasi kami sedang melakukan verifikasi data Anda. Mohon tunggu pesan resmi melalui Telegram/WhatsApp dalam waktu 1x24 jam.</p>
+                  <p className="text-lg sm:text-2xl text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed">Admin Registrasi kami sedang melakukan verifikasi data Anda. Mohon tunggu pesan resmi melalui WhatsApp dalam waktu 1x24 jam.</p>
                   <div className="flex flex-col md:flex-row gap-4 sm:gap-6 justify-center">
                     <button onClick={navigateToHome} className="bg-black/5 text-black px-10 sm:px-14 py-4 sm:py-6 rounded-full font-black text-lg sm:text-xl hover:bg-black/10 transition-all active:scale-95">
                       KEMBALI KE BERANDA
