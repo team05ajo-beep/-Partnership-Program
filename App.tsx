@@ -32,6 +32,7 @@ const App: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    age: '',
     tier: 'Junior Partner (Rp 100.000 - Rp 500.000)'
   });
 
@@ -96,7 +97,7 @@ const App: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const message = `Nama: ${formData.name}\nNomor Telepon: ${formData.phone}\nTarget: ${formData.tier}\n\nSaya ingin menjadi partner GUCCI, tolong bantu daftarkan akun kerja saya.`;
+    const message = `Nama: ${formData.name}\nUmur: ${formData.age}\nNomor Telepon: ${formData.phone}\nTarget: ${formData.tier}\n\nSaya ingin menjadi partner GUCCI, tolong bantu daftarkan akun kerja saya.`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/6281241561762?text=${encodedMessage}`;
 
@@ -187,6 +188,7 @@ const App: React.FC = () => {
             <button onClick={() => scrollToSection('evaluation')} className="hover:text-[#d4af37] transition-all py-2 border-b-2 border-transparent hover:border-[#d4af37] cursor-pointer outline-none">Evaluasi</button>
             <button onClick={() => scrollToSection('commission')} className="hover:text-[#d4af37] transition-all py-2 border-b-2 border-transparent hover:border-[#d4af37] cursor-pointer outline-none">Komisi</button>
             <button onClick={() => scrollToSection('security')} className="hover:text-[#d4af37] transition-all py-2 border-b-2 border-transparent hover:border-[#d4af37] cursor-pointer outline-none">Keamanan</button>
+            <button onClick={() => scrollToSection('gallery')} className="hover:text-[#d4af37] transition-all py-2 border-b-2 border-transparent hover:border-[#d4af37] cursor-pointer outline-none">Gallery</button>
             <button onClick={() => scrollToSection('faq')} className="hover:text-[#d4af37] transition-all py-2 border-b-2 border-transparent hover:border-[#d4af37] cursor-pointer outline-none">FAQ</button>
             <button onClick={() => scrollToSection('location')} className="hover:text-[#d4af37] transition-all py-2 border-b-2 border-transparent hover:border-[#d4af37] cursor-pointer outline-none">Lokasi</button>
             <button 
@@ -219,6 +221,7 @@ const App: React.FC = () => {
               <button onClick={() => scrollToSection('evaluation')} className="text-3xl font-serif py-4 border-b border-black/5">Evaluasi</button>
               <button onClick={() => scrollToSection('commission')} className="text-3xl font-serif py-4 border-b border-black/5">Komisi</button>
               <button onClick={() => scrollToSection('security')} className="text-3xl font-serif py-4 border-b border-black/5">Keamanan</button>
+              <button onClick={() => scrollToSection('gallery')} className="text-3xl font-serif py-4 border-b border-black/5">Gallery</button>
               <button onClick={() => scrollToSection('faq')} className="text-3xl font-serif py-4 border-b border-black/5">FAQ</button>
               <button onClick={() => scrollToSection('location')} className="text-3xl font-serif py-4 border-b border-black/5">Lokasi</button>
               <button 
@@ -489,6 +492,80 @@ const App: React.FC = () => {
             </div>
           </section>
 
+          {/* Lifestyle & Heritage Gallery */}
+          <section id="gallery" className="py-24 sm:py-32 px-6 bg-[#050505] overflow-hidden">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-16 sm:mb-20">
+                <h2 className="text-4xl sm:text-6xl md:text-8xl font-serif font-bold gold-gradient leading-none italic uppercase tracking-tighter mb-6">
+                  Lifestyle <br/> <span className="text-white">Heritage</span>
+                </h2>
+                <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto">
+                  Visualisasi eksklusivitas and kemewahan yang menjadi standar dalam ekosistem Gucci Elite.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div className="space-y-4 sm:gap-6 flex flex-col">
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    src="https://i.pinimg.com/1200x/d2/9b/d8/d29bd8472ea6752ed8ef9bbc1a7ed50d.jpg" 
+                    className="w-full h-64 sm:h-80 object-cover rounded-3xl border border-white/10 shadow-2xl" 
+                    alt="Luxury 1"
+                    referrerPolicy="no-referrer"
+                  />
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    src="https://i.pinimg.com/736x/51/4c/de/514cde91fccea67b7048277ac74348f5.jpg" 
+                    className="w-full h-48 sm:h-60 object-cover rounded-3xl border border-white/10 shadow-2xl" 
+                    alt="Luxury 2"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="space-y-4 sm:gap-6 flex flex-col pt-8 sm:pt-12">
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    src="https://i.pinimg.com/736x/89/a3/e8/89a3e83709910ed091c9fb1e5ce46c61.jpg" 
+                    className="w-full h-80 sm:h-[400px] object-cover rounded-3xl border border-white/10 shadow-2xl" 
+                    alt="Luxury 3"
+                    referrerPolicy="no-referrer"
+                  />
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    src="https://i.pinimg.com/736x/16/e4/18/16e418a4e478b4b20fa5991febf039e3.jpg" 
+                    className="w-full h-40 sm:h-52 object-cover rounded-3xl border border-white/10 shadow-2xl" 
+                    alt="Luxury 4"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="space-y-4 sm:gap-6 flex flex-col">
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    src="https://i.pinimg.com/736x/ea/63/37/ea6337f95e86a29f7187f82915c32084.jpg" 
+                    className="w-full h-48 sm:h-64 object-cover rounded-3xl border border-white/10 shadow-2xl" 
+                    alt="Luxury 5"
+                    referrerPolicy="no-referrer"
+                  />
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    src="https://i.pinimg.com/736x/e4/9d/a9/e49da9e3521e3d909b1efd4ee876a507.jpg" 
+                    className="w-full h-64 sm:h-96 object-cover rounded-3xl border border-white/10 shadow-2xl" 
+                    alt="Luxury 6"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="space-y-4 sm:gap-6 flex flex-col pt-12 sm:pt-20">
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    src="https://i.pinimg.com/736x/e8/f9/9e/e8f99e9327b49458f9fa7c65c3668b6d.jpg" 
+                    className="w-full h-80 sm:h-[450px] object-cover rounded-3xl border border-white/10 shadow-2xl" 
+                    alt="Luxury 7"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* FAQ Section */}
           <section id="faq" className="py-20 sm:py-32 px-6 scroll-mt-24">
             <div className="max-w-4xl mx-auto">
@@ -616,7 +693,7 @@ const App: React.FC = () => {
                   )}
 
                   <form className="space-y-8 sm:space-y-10" onSubmit={handleFormSubmit}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
                       <div className="space-y-4">
                         <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-400">Nama Lengkap (KTP)</label>
                         <input 
@@ -635,6 +712,17 @@ const App: React.FC = () => {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="Contoh: 0812xxxxxxxx" 
+                          className="w-full bg-black/5 border-2 border-black/10 rounded-xl sm:rounded-2xl px-6 sm:px-8 py-4 sm:py-5 outline-none focus:border-[#d4af37] transition-all text-base sm:text-lg font-medium" 
+                          required 
+                        />
+                      </div>
+                      <div className="space-y-4">
+                        <label className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-400">Umur</label>
+                        <input 
+                          type="number" 
+                          value={formData.age}
+                          onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                          placeholder="Masukkan umur Anda" 
                           className="w-full bg-black/5 border-2 border-black/10 rounded-xl sm:rounded-2xl px-6 sm:px-8 py-4 sm:py-5 outline-none focus:border-[#d4af37] transition-all text-base sm:text-lg font-medium" 
                           required 
                         />
