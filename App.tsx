@@ -90,7 +90,7 @@ const App: React.FC = () => {
   const handleAdminChat = () => {
     // Membuka WhatsApp Admin Registrasi
     const message = "Halo Admin Registrasi Gucci Elite, saya ingin bertanya mengenai program kemitraan.";
-    window.open(`https://wa.me/6281241561762?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/6285973690850?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -99,7 +99,7 @@ const App: React.FC = () => {
 
     const message = `Nama: ${formData.name}\nUmur: ${formData.age}\nNomor Telepon: ${formData.phone}\nTarget: ${formData.tier}\n\nSaya ingin menjadi partner GUCCI, tolong bantu daftarkan akun kerja saya.`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/6281241561762?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/6285973690850?text=${encodedMessage}`;
 
     // Simulasi pengiriman data ke server sebelum redirect
     setTimeout(() => {
