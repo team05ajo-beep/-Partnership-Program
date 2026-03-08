@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Crown, Diamond, Shield, Users, TrendingUp, Menu, X, ChevronDown, ArrowLeft, CheckCircle, MapPin } from 'lucide-react';
+import { Crown, Diamond, Shield, Users, TrendingUp, Menu, X, ChevronDown, ArrowLeft, CheckCircle, MapPin, Info, DollarSign, Image, HelpCircle } from 'lucide-react';
 import { Feature, FAQItem } from './types';
 
 const VerificationStamp: React.FC<{ className?: string }> = ({ className }) => (
@@ -53,7 +53,7 @@ const App: React.FC = () => {
         const element = document.getElementById(id);
         if (element) {
           const navOffset = 80;
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({
             top: elementPosition - navOffset,
             behavior: 'smooth'
@@ -64,7 +64,7 @@ const App: React.FC = () => {
       const element = document.getElementById(id);
       if (element) {
         const navOffset = 80;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
           top: elementPosition - navOffset,
           behavior: 'smooth'
@@ -201,36 +201,82 @@ const App: React.FC = () => {
 
           {/* Mobile Menu Button - Aktif */}
           <button 
-            className="lg:hidden text-[#d4af37] p-2 active:bg-black/5 rounded-lg border border-[#d4af37]/20 transition-colors"
+            className="lg:hidden text-[#d4af37] p-2.5 active:bg-black/5 rounded-xl border-2 border-[#d4af37]/40 transition-all hover:border-[#d4af37] shadow-sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
         {/* Mobile Menu Content - Semua Link Aktif */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="lg:hidden fixed inset-0 top-[60px] bg-white/98 z-[90] p-10 flex flex-col gap-4 text-center"
-            >
-              <button onClick={() => scrollToSection('about')} className="text-3xl font-serif gold-gradient py-4 border-b border-black/5">Tentang Bisnis</button>
-              <button onClick={() => scrollToSection('evaluation')} className="text-3xl font-serif py-4 border-b border-black/5">Evaluasi</button>
-              <button onClick={() => scrollToSection('commission')} className="text-3xl font-serif py-4 border-b border-black/5">Komisi</button>
-              <button onClick={() => scrollToSection('security')} className="text-3xl font-serif py-4 border-b border-black/5">Keamanan</button>
-              <button onClick={() => scrollToSection('gallery')} className="text-3xl font-serif py-4 border-b border-black/5">Gallery</button>
-              <button onClick={() => scrollToSection('faq')} className="text-3xl font-serif py-4 border-b border-black/5">FAQ</button>
-              <button onClick={() => scrollToSection('location')} className="text-3xl font-serif py-4 border-b border-black/5">Lokasi</button>
-              <button 
-                onClick={navigateToRegistration}
-                className="bg-gold-gradient text-black px-8 py-5 rounded-full font-black text-xl mt-6 shadow-[0_0_30px_rgba(212,175,55,0.3)]"
+            <>
+              {/* Overlay */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[85]"
+              />
+              
+              <motion.div 
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="lg:hidden fixed right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white z-[90] shadow-2xl flex flex-col overflow-hidden"
               >
-                Join Program Now
-              </button>
-            </motion.div>
+                {/* Menu Header */}
+                <div className="p-6 border-b border-black/5 flex justify-between items-center bg-white sticky top-0 z-10">
+                  <span className="text-xl font-serif font-bold gold-gradient tracking-widest uppercase">Menu</span>
+                  <button 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2 text-gray-400 hover:text-black transition-colors"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-6">
+                  <div className="flex flex-col gap-1">
+                    {[
+                      { id: 'about', label: 'Tentang Bisnis', icon: <Info size={20} /> },
+                      { id: 'evaluation', label: 'Evaluasi', icon: <TrendingUp size={20} /> },
+                      { id: 'commission', label: 'Komisi', icon: <DollarSign size={20} /> },
+                      { id: 'security', label: 'Keamanan', icon: <Shield size={20} /> },
+                      { id: 'gallery', label: 'Gallery', icon: <Image size={20} /> },
+                      { id: 'faq', label: 'FAQ', icon: <HelpCircle size={20} /> },
+                      { id: 'location', label: 'Lokasi', icon: <MapPin size={20} /> },
+                    ].map((item, idx) => (
+                      <motion.button 
+                        key={item.id}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.05 }}
+                        onClick={() => scrollToSection(item.id)} 
+                        className="flex items-center gap-4 text-left text-lg font-medium py-4 px-4 rounded-2xl hover:bg-black/5 hover:text-[#d4af37] transition-all group"
+                      >
+                        <span className="text-gray-400 group-hover:text-[#d4af37] transition-colors">{item.icon}</span>
+                        <span className="font-serif">{item.label}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="p-8 border-t border-black/5 bg-gray-50/50">
+                  <button 
+                    onClick={navigateToRegistration}
+                    className="w-full bg-gold-gradient text-black px-8 py-5 rounded-full font-black text-lg shadow-[0_10px_30px_rgba(212,175,55,0.3)] active:scale-95 transition-transform flex items-center justify-center gap-3"
+                  >
+                    <Crown size={20} />
+                    Join Program Now
+                  </button>
+                  <p className="text-center text-[10px] text-gray-400 mt-6 uppercase tracking-[0.2em] font-bold">Official Gucci Elite Partnership</p>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </nav>
