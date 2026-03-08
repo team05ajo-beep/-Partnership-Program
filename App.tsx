@@ -176,10 +176,10 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
       {/* Navigation Bar */}
-      <nav className={`fixed w-full z-[100] transition-all duration-500 ${scrolled || isMobileMenuOpen ? 'glass-nav py-3' : 'bg-transparent py-6'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <nav className={`fixed w-full z-[100] transition-all duration-500 ${scrolled || isMobileMenuOpen ? 'glass-nav py-2 sm:py-3' : 'bg-transparent py-4 sm:py-6'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
           <div className="flex items-center gap-2 cursor-pointer group" onClick={navigateToHome}>
-            <span className="text-2xl font-serif font-bold gold-gradient tracking-widest uppercase transition-transform group-hover:scale-105">Gucci Elite</span>
+            <span className="text-xl sm:text-2xl font-serif font-bold gold-gradient tracking-widest uppercase transition-transform group-hover:scale-105">Gucci Elite</span>
           </div>
 
           {/* Desktop Links - Semua Tombol Aktif */}
@@ -201,10 +201,10 @@ const App: React.FC = () => {
 
           {/* Mobile Menu Button - Aktif */}
           <button 
-            className="lg:hidden text-[#d4af37] p-2.5 active:bg-black/5 rounded-xl border-2 border-[#d4af37]/40 transition-all hover:border-[#d4af37] shadow-sm"
+            className="lg:hidden text-[#d4af37] p-2 sm:p-2.5 active:bg-black/5 rounded-xl border-2 border-[#d4af37]/40 transition-all hover:border-[#d4af37] shadow-sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            {isMobileMenuOpen ? <X size={24} className="sm:w-[26px] sm:h-[26px]" /> : <Menu size={24} className="sm:w-[26px] sm:h-[26px]" />}
           </button>
         </div>
 
@@ -218,7 +218,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[85]"
+                className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[110]"
               />
               
               <motion.div 
@@ -226,29 +226,29 @@ const App: React.FC = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="lg:hidden fixed right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white z-[90] shadow-2xl flex flex-col overflow-hidden"
+                className="lg:hidden fixed right-0 top-0 bottom-0 w-[90%] max-w-sm bg-white z-[120] shadow-2xl flex flex-col overflow-hidden"
               >
                 {/* Menu Header */}
-                <div className="p-6 border-b border-black/5 flex justify-between items-center bg-white sticky top-0 z-10">
-                  <span className="text-xl font-serif font-bold gold-gradient tracking-widest uppercase">Menu</span>
+                <div className="pt-14 p-5 sm:p-6 border-b border-black/5 flex justify-between items-center bg-white sticky top-0 z-10 shadow-sm">
+                  <span className="text-lg sm:text-xl font-serif font-bold gold-gradient tracking-widest uppercase">Gucci Elite Menu</span>
                   <button 
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 text-gray-400 hover:text-black transition-colors"
+                    className="p-3 text-gray-400 hover:text-black transition-colors rounded-full active:bg-black/5"
                   >
-                    <X size={24} />
+                    <X size={26} />
                   </button>
                 </div>
 
-                <div className="flex-1 overflow-y-auto p-6">
+                <div className="flex-1 overflow-y-auto p-4">
                   <div className="flex flex-col gap-1">
                     {[
-                      { id: 'about', label: 'Tentang Bisnis', icon: <Info size={20} /> },
-                      { id: 'evaluation', label: 'Evaluasi', icon: <TrendingUp size={20} /> },
-                      { id: 'commission', label: 'Komisi', icon: <DollarSign size={20} /> },
-                      { id: 'security', label: 'Keamanan', icon: <Shield size={20} /> },
-                      { id: 'gallery', label: 'Gallery', icon: <Image size={20} /> },
-                      { id: 'faq', label: 'FAQ', icon: <HelpCircle size={20} /> },
-                      { id: 'location', label: 'Lokasi', icon: <MapPin size={20} /> },
+                      { id: 'about', label: 'Tentang Bisnis', icon: <Info size={18} /> },
+                      { id: 'evaluation', label: 'Evaluasi', icon: <TrendingUp size={18} /> },
+                      { id: 'commission', label: 'Komisi', icon: <DollarSign size={18} /> },
+                      { id: 'security', label: 'Keamanan', icon: <Shield size={18} /> },
+                      { id: 'gallery', label: 'Gallery', icon: <Image size={18} /> },
+                      { id: 'faq', label: 'FAQ', icon: <HelpCircle size={18} /> },
+                      { id: 'location', label: 'Lokasi', icon: <MapPin size={18} /> },
                     ].map((item, idx) => (
                       <motion.button 
                         key={item.id}
@@ -256,24 +256,24 @@ const App: React.FC = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.05 }}
                         onClick={() => scrollToSection(item.id)} 
-                        className="flex items-center gap-4 text-left text-lg font-medium py-4 px-4 rounded-2xl hover:bg-black/5 hover:text-[#d4af37] transition-all group"
+                        className="flex items-center gap-4 text-left text-base font-medium py-4 px-4 rounded-xl hover:bg-black/5 hover:text-[#d4af37] transition-all group"
                       >
-                        <span className="text-gray-400 group-hover:text-[#d4af37] transition-colors">{item.icon}</span>
-                        <span className="font-serif">{item.label}</span>
+                        <span className="text-gray-400 group-hover:text-[#d4af37] transition-colors shrink-0">{item.icon}</span>
+                        <span className="font-serif whitespace-nowrap">{item.label}</span>
                       </motion.button>
                     ))}
                   </div>
                 </div>
                 
-                <div className="p-8 border-t border-black/5 bg-gray-50/50">
+                <div className="p-6 border-t border-black/5 bg-gray-50/50">
                   <button 
                     onClick={navigateToRegistration}
-                    className="w-full bg-gold-gradient text-black px-8 py-5 rounded-full font-black text-lg shadow-[0_10px_30px_rgba(212,175,55,0.3)] active:scale-95 transition-transform flex items-center justify-center gap-3"
+                    className="w-full bg-gold-gradient text-black px-6 py-4 rounded-full font-black text-base shadow-[0_10px_30px_rgba(212,175,55,0.3)] active:scale-95 transition-transform flex items-center justify-center gap-2"
                   >
-                    <Crown size={20} />
+                    <Crown size={18} />
                     Join Program Now
                   </button>
-                  <p className="text-center text-[10px] text-gray-400 mt-6 uppercase tracking-[0.2em] font-bold">Official Gucci Elite Partnership</p>
+                  <p className="text-center text-[9px] text-gray-400 mt-4 uppercase tracking-[0.2em] font-bold">Official Gucci Elite Partnership</p>
                 </div>
               </motion.div>
             </>
