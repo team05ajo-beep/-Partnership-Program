@@ -44,6 +44,17 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   // Fungsi Scroll yang lebih robust
   const scrollToSection = (id: string) => {
     if (currentPage !== 'home') {
@@ -198,87 +209,7 @@ const App: React.FC = () => {
               Join Program
             </button>
           </div>
-
-          {/* Mobile Menu Button - Aktif */}
-          <button 
-            className="lg:hidden text-[#d4af37] p-2 sm:p-2.5 active:bg-black/5 rounded-xl border-2 border-[#d4af37]/40 transition-all hover:border-[#d4af37] shadow-sm"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} className="sm:w-[26px] sm:h-[26px]" /> : <Menu size={24} className="sm:w-[26px] sm:h-[26px]" />}
-          </button>
         </div>
-
-        {/* Mobile Menu Content - Semua Link Aktif */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <>
-              {/* Overlay */}
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[110]"
-              />
-              
-              <motion.div 
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="lg:hidden fixed right-0 top-0 bottom-0 w-[90%] max-w-sm bg-white z-[120] shadow-2xl flex flex-col overflow-hidden"
-              >
-                {/* Menu Header */}
-                <div className="pt-14 p-5 sm:p-6 border-b border-black/5 flex justify-between items-center bg-white sticky top-0 z-10 shadow-sm">
-                  <span className="text-lg sm:text-xl font-serif font-bold gold-gradient tracking-widest uppercase">Gucci Elite Menu</span>
-                  <button 
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-3 text-gray-400 hover:text-black transition-colors rounded-full active:bg-black/5"
-                  >
-                    <X size={26} />
-                  </button>
-                </div>
-
-                <div className="flex-1 overflow-y-auto p-4">
-                  <div className="flex flex-col gap-1">
-                    {[
-                      { id: 'about', label: 'Tentang Bisnis', icon: <Info size={18} /> },
-                      { id: 'evaluation', label: 'Evaluasi', icon: <TrendingUp size={18} /> },
-                      { id: 'commission', label: 'Komisi', icon: <DollarSign size={18} /> },
-                      { id: 'security', label: 'Keamanan', icon: <Shield size={18} /> },
-                      { id: 'gallery', label: 'Gallery', icon: <Image size={18} /> },
-                      { id: 'faq', label: 'FAQ', icon: <HelpCircle size={18} /> },
-                      { id: 'location', label: 'Lokasi', icon: <MapPin size={18} /> },
-                    ].map((item, idx) => (
-                      <motion.button 
-                        key={item.id}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.05 }}
-                        onClick={() => scrollToSection(item.id)} 
-                        className="flex items-center gap-4 text-left text-base font-medium py-4 px-4 rounded-xl hover:bg-black/5 hover:text-[#d4af37] transition-all group"
-                      >
-                        <span className="text-gray-400 group-hover:text-[#d4af37] transition-colors shrink-0">{item.icon}</span>
-                        <span className="font-serif whitespace-nowrap">{item.label}</span>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="p-6 border-t border-black/5 bg-gray-50/50">
-                  <button 
-                    onClick={navigateToRegistration}
-                    className="w-full bg-gold-gradient text-black px-6 py-4 rounded-full font-black text-base shadow-[0_10px_30px_rgba(212,175,55,0.3)] active:scale-95 transition-transform flex items-center justify-center gap-2"
-                  >
-                    <Crown size={18} />
-                    Join Program Now
-                  </button>
-                  <p className="text-center text-[9px] text-gray-400 mt-4 uppercase tracking-[0.2em] font-bold">Official Gucci Elite Partnership</p>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
       </nav>
 
       <AnimatePresence mode="wait">
